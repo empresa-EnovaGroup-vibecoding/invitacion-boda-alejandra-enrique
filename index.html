@@ -3,390 +3,606 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alejandra & Enrique - 09 de Mayo 2026</title>
-  <meta name="description" content="Estás invitado a la boda de Alejandra y Enrique. 09 de Mayo de 2026.">
-  <meta property="og:title" content="Boda de Alejandra & Enrique">
-  <meta property="og:description" content="Nos casamos! 09 de Mayo de 2026 - Hotel Guadalupe, La Puerta, Trujillo">
+  <title>Alejandra & Enrique — 09 de Mayo 2026</title>
+  <meta name="description" content="Estás invitado a la boda de Alejandra Hernández y Enrique Paniagua. 09 de Mayo de 2026, Hotel Guadalupe, La Puerta, Trujillo.">
+  <meta property="og:title" content="Nos Casamos — Alejandra & Enrique">
+  <meta property="og:description" content="09 de Mayo de 2026 · Hotel Guadalupe, La Puerta, Trujillo">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ========== ENVELOPE COVER ========== -->
-  <div id="envelope-screen">
-    <div class="envelope-container">
-      <div class="wax-seal" id="wax-seal">
-        <span class="seal-text">A & E</span>
+  <!-- ============================
+       1. PANTALLA DE SOBRE
+       ============================ -->
+  <div id="envelope-screen" aria-label="Portada de invitación">
+    <div class="envelope-bg-text">
+      <p class="env-top-text">El día más importante de nuestras vidas ha llegado</p>
+      <h1 class="env-headline">¡NOS CASAMOS!</h1>
+    </div>
+
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <!-- El sobre -->
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap" id="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-left-fold"></div>
+          <div class="envelope-right-fold"></div>
+          <div class="envelope-bottom-fold"></div>
+        </div>
+        <!-- Sello de cera -->
+        <div class="wax-seal" id="wax-seal">
+          <span class="seal-initials">A&amp;E</span>
+        </div>
+        <!-- Tarjeta que sale -->
+        <div class="inner-card" id="inner-card">
+          <p class="inner-card-reserved">RESERVADO PARA:</p>
+          <p class="inner-card-guest">Familia Invitada</p>
+          <p class="inner-card-persons">2 personas</p>
+          <div class="inner-card-badge" id="inner-card-badge">VER MÁS<br>DETALLES</div>
+        </div>
       </div>
-      <p class="envelope-instruction">Toca el sello para abrir</p>
-      <div class="floating-petals">
-        <div class="petal petal-1"></div>
-        <div class="petal petal-2"></div>
-        <div class="petal petal-3"></div>
-        <div class="petal petal-4"></div>
-        <div class="petal petal-5"></div>
-      </div>
+      <p class="envelope-cta" id="envelope-cta">
+        <span class="cta-arrow">&#9660;</span> Clic aquí para abrir
+      </p>
+    </div>
+
+    <p class="envelope-names">ALEJANDRA &amp; ENRIQUE</p>
+
+    <!-- Pétalos flotantes -->
+    <div class="petals-layer" aria-hidden="true">
+      <div class="petal p1"></div>
+      <div class="petal p2"></div>
+      <div class="petal p3"></div>
+      <div class="petal p4"></div>
+      <div class="petal p5"></div>
+      <div class="petal p6"></div>
+      <div class="petal p7"></div>
     </div>
   </div>
 
-  <!-- ========== MAIN INVITATION ========== -->
+  <!-- ============================
+       CONTENIDO PRINCIPAL
+       ============================ -->
   <main id="invitation" class="hidden">
 
-    <!-- MUSIC TOGGLE -->
-    <button id="music-toggle" class="music-btn" aria-label="Toggle music">
-      <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Botón música -->
+    <button id="music-toggle" class="music-btn" aria-label="Activar o pausar música">
+      <svg class="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M9 18V5l12-2v13"/>
         <circle cx="6" cy="18" r="3"/>
         <circle cx="18" cy="16" r="3"/>
       </svg>
-      <span class="music-bars">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <span class="music-bars" aria-hidden="true">
+        <span class="bar b1"></span>
+        <span class="bar b2"></span>
+        <span class="bar b3"></span>
       </span>
     </button>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-      <div class="hero-overlay"></div>
-      <div class="ornament ornament-top">
-        <svg viewBox="0 0 200 30" class="ornament-svg">
-          <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
-        </svg>
+    <!-- ==========================
+         2. HERO
+         ========================== -->
+    <section class="hero" id="hero" aria-label="Portada principal">
+      <div class="hero-photo-bg" aria-hidden="true">
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-leaves hero-leaves-left" aria-hidden="true">
+          <div class="leaf l1"></div>
+          <div class="leaf l2"></div>
+          <div class="leaf l3"></div>
+          <div class="leaf l4"></div>
+        </div>
+        <div class="hero-leaves hero-leaves-right" aria-hidden="true">
+          <div class="leaf l5"></div>
+          <div class="leaf l6"></div>
+          <div class="leaf l7"></div>
+        </div>
       </div>
       <div class="hero-content reveal">
-        <p class="hero-subtitle">Tenemos el honor de invitarte a la boda de</p>
-        <h1 class="bride-name">Alejandra</h1>
-        <div class="ampersand">&</div>
-        <h1 class="groom-name">Enrique</h1>
-        <div class="hero-date">
-          <div class="date-line"></div>
-          <span>09 de Mayo de 2026</span>
-          <div class="date-line"></div>
-        </div>
+        <p class="hero-small-title">Nuestra boda</p>
+        <h2 class="hero-names">ALEJANDRA &amp; ENRIQUE</h2>
+        <p class="hero-date-display">09 · 05</p>
       </div>
-      <div class="ornament ornament-bottom">
-        <svg viewBox="0 0 200 30" class="ornament-svg">
-          <path d="M0,15 Q50,30 100,15 Q150,0 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
+      <div class="scroll-down-hint" aria-hidden="true">
+        <div class="scroll-chevron"></div>
       </div>
     </section>
 
-    <!-- COUNTDOWN -->
-    <section class="countdown-section" id="countdown">
-      <div class="section-wrapper reveal">
-        <p class="section-label">Faltan</p>
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <span class="countdown-number" id="days">000</span>
-            <span class="countdown-label">Días</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="hours">00</span>
-            <span class="countdown-label">Horas</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="minutes">00</span>
-            <span class="countdown-label">Minutos</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="seconds">00</span>
-            <span class="countdown-label">Segundos</span>
-          </div>
+    <!-- ==========================
+         3. MENSAJE DE INVITACIÓN
+         ========================== -->
+    <section class="invite-message-section" aria-labelledby="invite-msg-heading">
+      <div class="floral-corner floral-tl" aria-hidden="true"></div>
+      <div class="floral-corner floral-tr" aria-hidden="true"></div>
+      <div class="floral-corner floral-bl" aria-hidden="true"></div>
+      <div class="floral-corner floral-br" aria-hidden="true"></div>
+      <div class="section-inner reveal">
+        <div class="floral-divider top-divider" aria-hidden="true">
+          <span class="fd-leaf"></span><span class="fd-dot"></span><span class="fd-leaf fd-leaf-r"></span>
         </div>
-        <p class="countdown-message">para el día más especial de nuestras vidas</p>
+        <p class="invite-body-text" id="invite-msg-heading">
+          Con inmensa felicidad compartimos que hemos decidido dar el gran paso y unir nuestras vidas en matrimonio.
+        </p>
+        <p class="invite-cursive">
+          Les invitamos a acompañarnos en este día tan especial.
+        </p>
+        <div class="floral-divider bottom-divider" aria-hidden="true">
+          <span class="fd-leaf"></span><span class="fd-dot"></span><span class="fd-leaf fd-leaf-r"></span>
+        </div>
       </div>
     </section>
 
-    <!-- COUPLE PHOTO -->
-    <section class="couple-section" id="couple">
-      <div class="section-wrapper reveal">
-        <div class="couple-frame">
-          <div class="photo-placeholder" id="couple-photo">
-            <div class="placeholder-initials">A & E</div>
-            <p class="placeholder-text">Nuestra foto juntos</p>
+    <!-- ==========================
+         4. COUNTDOWN
+         ========================== -->
+    <section class="countdown-section" id="countdown" aria-label="Cuenta regresiva">
+      <div class="floral-border-top" aria-hidden="true">
+        <span class="fb-flower fb-f1">✿</span>
+        <span class="fb-line"></span>
+        <span class="fb-flower fb-f2">✾</span>
+        <span class="fb-line"></span>
+        <span class="fb-flower fb-f3">✿</span>
+      </div>
+      <div class="section-inner reveal">
+        <p class="countdown-label-top">FALTAN</p>
+        <div class="countdown-grid" role="timer" aria-live="polite">
+          <div class="cd-item">
+            <span class="cd-number" id="days">000</span>
+            <span class="cd-unit">Días</span>
           </div>
-          <div class="frame-corner frame-tl"></div>
-          <div class="frame-corner frame-tr"></div>
-          <div class="frame-corner frame-bl"></div>
-          <div class="frame-corner frame-br"></div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-item">
+            <span class="cd-number" id="hours">00</span>
+            <span class="cd-unit">Horas</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-item">
+            <span class="cd-number" id="minutes">00</span>
+            <span class="cd-unit">Min</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-item">
+            <span class="cd-number" id="seconds">00</span>
+            <span class="cd-unit">Seg</span>
+          </div>
         </div>
-        <blockquote class="love-quote">
-          "El amor no se mira, se siente, y aún más cuando ella está junto a mí."
-        </blockquote>
+      </div>
+      <div class="floral-border-bottom" aria-hidden="true">
+        <span class="fb-flower fb-f1">✿</span>
+        <span class="fb-line"></span>
+        <span class="fb-flower fb-f2">✾</span>
+        <span class="fb-line"></span>
+        <span class="fb-flower fb-f3">✿</span>
       </div>
     </section>
 
-    <!-- OUR STORY TIMELINE -->
-    <section class="story-section" id="story">
-      <div class="section-wrapper">
-        <h2 class="section-title reveal">Nuestra Historia</h2>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/>
-                </svg>
-              </div>
-              <h3>Nos Conocimos</h3>
-              <p>El destino nos cruzó en el momento perfecto y desde entonces supimos que algo mágico estaba por comenzar.</p>
+    <!-- ==========================
+         5. EL GRAN DÍA (Calendario)
+         ========================== -->
+    <section class="gran-dia-section" aria-labelledby="gran-dia-heading">
+      <div class="section-inner reveal">
+        <h2 class="section-title" id="gran-dia-heading">EL GRAN DÍA</h2>
+        <p class="section-subtitle-cursive">Mayo</p>
+        <div class="calendar-wrapper" id="calendar-wrapper" aria-label="Calendario de Mayo 2026"></div>
+        <div class="couple-photo-frame">
+          <div class="couple-arch-frame">
+            <div class="couple-photo-placeholder" id="couple-photo">
+              <p class="placeholder-text">A &amp; E</p>
+              <p class="placeholder-sub">Foto de los novios</p>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-                </svg>
-              </div>
-              <h3>Nos Enamoramos</h3>
-              <p>Cada día juntos confirmaba lo que nuestros corazones ya sabían: estábamos hechos el uno para el otro.</p>
-            </div>
+          <div class="arch-flowers arch-flowers-left" aria-hidden="true">
+            <span class="af af1">🌸</span>
+            <span class="af af2">🌿</span>
+            <span class="af af3">🌸</span>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <h3>La Propuesta</h3>
-              <p>Con el corazón latiendo a mil, llegó la pregunta más importante: ¿Quieres pasar el resto de tu vida conmigo?</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-                  <path d="M12 6v6l4 2"/>
-                </svg>
-              </div>
-              <h3>¡Nos Casamos!</h3>
-              <p class="highlight-text">09 de Mayo de 2026</p>
-            </div>
+          <div class="arch-flowers arch-flowers-right" aria-hidden="true">
+            <span class="af af4">🌸</span>
+            <span class="af af5">🌿</span>
+            <span class="af af6">🌸</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- EVENT DETAILS -->
-    <section class="events-section" id="events">
-      <div class="section-wrapper">
-        <h2 class="section-title reveal">Celebración</h2>
+    <!-- ==========================
+         6. CEREMONIA Y RECEPCIÓN
+         ========================== -->
+    <section class="events-section" aria-labelledby="events-heading">
+      <div class="section-inner">
+        <h2 class="section-title reveal" id="events-heading" style="text-align:center; margin-bottom:40px;">CEREMONIA &amp; RECEPCIÓN</h2>
 
-        <div class="event-cards">
-          <div class="event-card reveal">
-            <div class="event-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 21h18M3 7v14M21 7v14M6 7V3m12 4V3M6 7h12M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/>
-              </svg>
-            </div>
-            <h3>Recepción</h3>
-            <div class="event-detail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="detail-icon">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-              <span>09 de Mayo de 2026</span>
-            </div>
-            <div class="event-detail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="detail-icon">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span>Hotel Guadalupe<br>La Puerta, Trujillo</span>
-            </div>
-            <a href="https://www.google.com/maps/search/Hotel+Guadalupe+La+Puerta+Trujillo" target="_blank" rel="noopener" class="map-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="btn-icon">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              Cómo Llegar
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DRESS CODE -->
-    <section class="dresscode-section" id="dresscode">
-      <div class="section-wrapper reveal">
-        <h2 class="section-title">Código de Vestimenta</h2>
-        <p class="dresscode-label">Formal / Elegante</p>
-        <div class="color-palette">
-          <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #e0d5c5;">
-            <span class="swatch-name">Blanco</span>
-          </div>
-          <div class="color-swatch" style="background: #D4AF37;">
-            <span class="swatch-name" style="color: #fff;">Dorado</span>
-          </div>
-          <div class="color-swatch" style="background: #D4C5A9;">
-            <span class="swatch-name">Beige</span>
-          </div>
-          <div class="color-swatch" style="background: #2C2C2C;">
-            <span class="swatch-name" style="color: #fff;">Negro</span>
-          </div>
-        </div>
-        <p class="dresscode-note">Te sugerimos estos tonos para armonizar con nuestra celebración</p>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="gallery-section" id="gallery">
-      <div class="section-wrapper">
-        <h2 class="section-title reveal">Galería</h2>
-        <div class="gallery-grid reveal">
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
-              <span>Foto 1</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
-              <span>Foto 2</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
-              <span>Foto 3</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
-              <span>Foto 4</span>
-            </div>
-          </div>
-          <div class="gallery-item gallery-item-wide">
-            <div class="gallery-placeholder">
-              <span>Foto 5</span>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
-              <span>Foto 6</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section class="rsvp-section" id="rsvp">
-      <div class="section-wrapper">
-        <h2 class="section-title reveal">Confirma tu Asistencia</h2>
-        <p class="rsvp-subtitle reveal">Tu presencia es el mejor regalo que podemos recibir</p>
-
-        <form class="rsvp-form reveal" id="rsvp-form">
-          <div class="form-group">
-            <input type="text" id="guest-name" placeholder="Tu nombre completo" required>
-            <label for="guest-name">Nombre</label>
-          </div>
-          <div class="form-group">
-            <select id="guest-count" required>
-              <option value="" disabled selected>¿Cuántos asistirán?</option>
-              <option value="1">1 persona</option>
-              <option value="2">2 personas</option>
-              <option value="3">3 personas</option>
-              <option value="4">4 personas</option>
-              <option value="5">5 personas</option>
-            </select>
-            <label for="guest-count">Acompañantes</label>
-          </div>
-          <div class="form-group">
-            <select id="attendance" required>
-              <option value="" disabled selected>¿Asistirás?</option>
-              <option value="yes">¡Sí, ahí estaré!</option>
-              <option value="no">Lo siento, no podré asistir</option>
-            </select>
-            <label for="attendance">Asistencia</label>
-          </div>
-          <div class="form-group">
-            <textarea id="guest-message" placeholder="Un mensaje para los novios (opcional)" rows="3"></textarea>
-            <label for="guest-message">Mensaje</label>
-          </div>
-          <button type="submit" class="submit-btn">
-            <span>Confirmar Asistencia</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-          </button>
-        </form>
-        <div class="rsvp-success hidden" id="rsvp-success">
-          <div class="success-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-              <path d="M22 4L12 14.01l-3-3"/>
+        <!-- Ceremonia -->
+        <div class="event-block reveal">
+          <div class="event-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 48 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="60">
+              <rect x="4" y="28" width="40" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 60V44h8v16M26 60V44h8v16" stroke="currentColor" stroke-width="2"/>
+              <rect x="16" y="34" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="26" y="34" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 28L24 14l20 14" stroke="currentColor" stroke-width="2"/>
+              <line x1="24" y1="2" x2="24" y2="14" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 2 Q24 6 28 2" stroke="currentColor" stroke-width="1.5" fill="none"/>
             </svg>
           </div>
-          <h3>¡Gracias por confirmar!</h3>
-          <p>Nos emociona saber que estarás con nosotros en este día tan especial.</p>
+          <h3 class="event-type">CEREMONIA</h3>
+          <p class="event-time">4:00 PM</p>
+          <p class="event-place">Lugar por confirmar</p>
+          <a href="#" class="btn-gold" aria-label="Ver mapa de la ceremonia">Ver mapa</a>
+        </div>
+
+        <div class="event-separator" aria-hidden="true">
+          <div class="sep-line"></div>
+          <span class="sep-diamond">◆</span>
+          <div class="sep-line"></div>
+        </div>
+
+        <!-- Recepción -->
+        <div class="event-block reveal">
+          <div class="event-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <path d="M10 12 Q10 24 18 28 L18 40M30 12 Q30 24 22 28 L22 40M14 40h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M34 8 L34 22 Q34 30 40 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="34" y1="18" x2="40" y2="18" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="event-type">RECEPCIÓN</h3>
+          <p class="event-time">6:00 PM</p>
+          <p class="event-place">Hotel Guadalupe<br>La Puerta, Trujillo</p>
+          <a href="https://www.google.com/maps/search/Hotel+Guadalupe+La+Puerta+Trujillo" target="_blank" rel="noopener noreferrer" class="btn-gold" aria-label="Ver mapa del Hotel Guadalupe en Google Maps">Ver mapa</a>
         </div>
       </div>
     </section>
 
-    <!-- GIFT -->
-    <section class="gift-section" id="gift">
-      <div class="section-wrapper reveal">
-        <h2 class="section-title">Mesa de Regalos</h2>
-        <div class="gift-icon-large">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+    <!-- ==========================
+         7. ITINERARIO
+         ========================== -->
+    <section class="itinerary-section" aria-labelledby="itinerary-heading">
+      <div class="floral-border-top" aria-hidden="true">
+        <span class="fb-flower fb-f1">✿</span>
+        <span class="fb-line fb-line-white"></span>
+        <span class="fb-flower fb-f2">✾</span>
+        <span class="fb-line fb-line-white"></span>
+        <span class="fb-flower fb-f3">✿</span>
+      </div>
+      <div class="section-inner reveal">
+        <h2 class="section-title-white" id="itinerary-heading">ITINERARIO</h2>
+        <div class="timeline" role="list">
+
+          <div class="tl-item" role="listitem">
+            <div class="tl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24">
+                <path d="M3 21h18M3 7v14M21 7v14M6 7V3m12 4V3M6 7h12"/>
+              </svg>
+            </div>
+            <div class="tl-content">
+              <span class="tl-time">4:00 PM</span>
+              <div class="tl-line" aria-hidden="true"></div>
+              <span class="tl-desc">Ceremonia</span>
+            </div>
+          </div>
+
+          <div class="tl-item" role="listitem">
+            <div class="tl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24">
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/>
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+              </svg>
+            </div>
+            <div class="tl-content">
+              <span class="tl-time">6:00 PM</span>
+              <div class="tl-line" aria-hidden="true"></div>
+              <span class="tl-desc">Cóctel de bienvenida</span>
+            </div>
+          </div>
+
+          <div class="tl-item" role="listitem">
+            <div class="tl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24">
+                <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+              </svg>
+            </div>
+            <div class="tl-content">
+              <span class="tl-time">7:30 PM</span>
+              <div class="tl-line" aria-hidden="true"></div>
+              <span class="tl-desc">Almuerzo / Cena</span>
+            </div>
+          </div>
+
+          <div class="tl-item" role="listitem">
+            <div class="tl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24">
+                <path d="M9 18V5l12-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="16" r="3"/>
+              </svg>
+            </div>
+            <div class="tl-content">
+              <span class="tl-time">10:00 PM</span>
+              <div class="tl-line" aria-hidden="true"></div>
+              <span class="tl-desc">Fiesta y baile</span>
+            </div>
+          </div>
+
+          <div class="tl-item" role="listitem">
+            <div class="tl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <div class="tl-content">
+              <span class="tl-time">2:00 AM</span>
+              <div class="tl-line" aria-hidden="true"></div>
+              <span class="tl-desc">Despedida</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="floral-border-bottom" aria-hidden="true">
+        <span class="fb-flower fb-f1">✿</span>
+        <span class="fb-line fb-line-white"></span>
+        <span class="fb-flower fb-f2">✾</span>
+        <span class="fb-line fb-line-white"></span>
+        <span class="fb-flower fb-f3">✿</span>
+      </div>
+    </section>
+
+    <!-- ==========================
+         8. CÓDIGO DE VESTIMENTA
+         ========================== -->
+    <section class="dresscode-section" aria-labelledby="dresscode-heading">
+      <div class="section-inner reveal">
+        <div class="dresscode-icon" aria-hidden="true">
+          <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="60">
+            <!-- Vestido mujer -->
+            <path d="M18 4 L14 12 L8 14 L8 38 L24 38 L24 14 L18 12 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <ellipse cx="18" cy="4" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M8 38 Q16 46 24 38" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <!-- Traje hombre -->
+            <path d="M56 4 L52 14 L46 16 L46 38 L66 38 L66 16 L60 14 L56 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <ellipse cx="56" cy="4" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M53 14 L56 20 L59 14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="56" y1="20" x2="56" y2="32" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </div>
-        <p class="gift-message">Tu presencia es nuestro mejor regalo. Sin embargo, si deseas tener un detalle con nosotros, puedes contribuir a nuestro nuevo hogar.</p>
-        <div class="gift-details">
-          <p class="gift-bank">Información bancaria próximamente</p>
+        <h2 class="section-title" id="dresscode-heading">CÓDIGO DE VESTIMENTA</h2>
+        <p class="dresscode-formal">FORMAL</p>
+        <div class="dresscode-details">
+          <p class="dresscode-item">
+            <span class="dresscode-gender">Mujeres:</span> Vestido Formal (Largo)
+          </p>
+          <p class="dresscode-item">
+            <span class="dresscode-gender">Hombres:</span> Traje Formal
+          </p>
+        </div>
+        <p class="dresscode-note">Reservamos los colores blanco y dorado para la novia y damas de honor</p>
+        <div class="dresscode-colors" aria-label="Colores reservados">
+          <div class="dc-swatch dc-white" aria-label="Blanco"></div>
+          <div class="dc-swatch dc-gold" aria-label="Dorado"></div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="footer">
-      <div class="footer-content reveal">
-        <div class="footer-ornament">
-          <svg viewBox="0 0 200 30" class="ornament-svg">
-            <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+    <!-- ==========================
+         9. SOLO ADULTOS
+         ========================== -->
+    <section class="adults-section" aria-labelledby="adults-heading">
+      <div class="section-inner reveal">
+        <div class="info-card">
+          <div class="card-floral-top" aria-hidden="true">
+            <span>🌸</span><span>🌿</span><span>🌸</span><span>🌿</span><span>🌸</span>
+          </div>
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="40" height="40">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+          </div>
+          <h2 class="card-title" id="adults-heading">RESERVADO PARA ADULTOS</h2>
+          <p class="card-text">
+            Desde el respeto y el amor consideramos que este evento es exclusivo para adultos. Tus hijos estarán más seguros y cómodos en casa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================
+         10. LLUVIA DE SOBRES
+         ========================== -->
+    <section class="gifts-section" aria-labelledby="gifts-heading">
+      <div class="section-inner reveal">
+        <div class="info-card">
+          <div class="card-floral-top" aria-hidden="true">
+            <span>🌸</span><span>🌿</span><span>🌸</span><span>🌿</span><span>🌸</span>
+          </div>
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="40" height="40">
+              <path d="M20 12v10H4V12M2 7h20v5H2z"/>
+              <path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+          <h2 class="card-title" id="gifts-heading">LLUVIA DE SOBRES</h2>
+          <p class="card-text">
+            Su presencia en nuestra boda es el regalo más valioso. Si desea honrarnos con un detalle, estaremos profundamente agradecidos.
+          </p>
+          <p class="card-subtext">Les dejamos algunas opciones:</p>
+          <button class="btn-gold btn-center" type="button">Lista de regalos</button>
+          <div class="gift-option">
+            <p class="gift-option-title">Contribución a nuestra Luna de Miel</p>
+            <div class="bank-info">
+              <p class="bank-placeholder">Datos bancarios próximamente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================
+         11. GALERÍA POLAROID
+         ========================== -->
+    <section class="gallery-section" aria-labelledby="gallery-heading">
+      <div class="gallery-quote-text" aria-hidden="true">
+        <p class="gallery-cursive">Nuestra historia comenzó cuando dos almas se encontraron y en el otro hallaron paz y un hogar para siempre</p>
+      </div>
+      <div class="section-inner reveal">
+        <div class="polaroid-grid" role="list" aria-label="Galería de fotos">
+          <div class="polaroid pol-1" role="listitem">
+            <div class="pol-photo">
+              <div class="pol-placeholder">Foto 1</div>
+            </div>
+            <p class="pol-caption">Nuestro primer viaje</p>
+          </div>
+          <div class="polaroid pol-2" role="listitem">
+            <div class="pol-photo">
+              <div class="pol-placeholder">Foto 2</div>
+            </div>
+            <p class="pol-caption">El primer "sí"</p>
+          </div>
+          <div class="polaroid pol-3" role="listitem">
+            <div class="pol-photo">
+              <div class="pol-placeholder">Foto 3</div>
+            </div>
+            <p class="pol-caption">La propuesta</p>
+          </div>
+          <div class="polaroid pol-4" role="listitem">
+            <div class="pol-photo">
+              <div class="pol-placeholder">Foto 4</div>
+            </div>
+            <p class="pol-caption">Para siempre</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================
+         12. FOTOS COMPARTIDAS
+         ========================== -->
+    <section class="shared-photos-section" aria-labelledby="shared-photos-heading">
+      <div class="section-inner reveal">
+        <div class="floral-corner floral-tl" aria-hidden="true"></div>
+        <div class="floral-corner floral-tr" aria-hidden="true"></div>
+        <div class="shared-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="44" height="44">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
           </svg>
         </div>
-        <p class="footer-names">Alejandra & Enrique</p>
-        <p class="footer-date">09 . 05 . 2026</p>
-        <p class="footer-message">Con amor, les esperamos para celebrar juntos el inicio de nuestra historia para siempre.</p>
-        <div class="footer-hearts">
-          <span>&#10084;</span>
-        </div>
-        <button class="share-btn" id="share-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-            <circle cx="18" cy="5" r="3"/>
-            <circle cx="6" cy="12" r="3"/>
-            <circle cx="18" cy="19" r="3"/>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        <h2 class="section-title" id="shared-photos-heading">FOTOS</h2>
+        <p class="shared-photos-text">Comparte con nosotros tus fotografías y videos del evento</p>
+        <button class="btn-gold btn-center" type="button">Ir al álbum</button>
+        <div class="floral-corner floral-bl" aria-hidden="true"></div>
+        <div class="floral-corner floral-br" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ==========================
+         13. CONFIRMAR ASISTENCIA
+         ========================== -->
+    <section class="rsvp-section" aria-labelledby="rsvp-heading">
+      <div class="section-inner reveal">
+        <div class="rsvp-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="44" height="44">
+            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
           </svg>
-          Compartir Invitación
+        </div>
+        <h2 class="section-title" id="rsvp-heading">CONFIRMAR ASISTENCIA</h2>
+        <p class="rsvp-deadline">Por favor, confirma tu asistencia antes del <strong>25 de Abril de 2026</strong></p>
+        <button class="btn-gold btn-center btn-large" type="button" id="open-rsvp-modal" aria-haspopup="dialog">
+          Confirmar aquí
         </button>
+        <p class="rsvp-cursive">¡Esperamos verles y celebrar juntos!</p>
       </div>
+    </section>
+
+    <!-- ==========================
+         14. FOOTER
+         ========================== -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-top">
+        <div class="footer-initials" aria-label="Iniciales de los novios">
+          <span class="fi-a">A</span>
+          <span class="fi-amp">❤</span>
+          <span class="fi-e">E</span>
+        </div>
+        <p class="footer-date-text">09 · 05 · 2026</p>
+      </div>
+      <div class="footer-photo-area">
+        <div class="footer-photo-placeholder" id="footer-photo">
+          <p class="fp-text">Foto principal<br>de los novios</p>
+          <p class="fp-names">Alejandra &amp; Enrique</p>
+        </div>
+      </div>
+      <div class="footer-gold-bar" aria-hidden="true"></div>
     </footer>
 
   </main>
 
-  <!-- PARTICLES CANVAS -->
-  <canvas id="particles-canvas"></canvas>
+  <!-- ==========================
+       15. MODAL CONFIRMACIÓN
+       ========================== -->
+  <div class="modal-overlay hidden" id="rsvp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close" id="close-rsvp-modal" aria-label="Cerrar modal">&#10005;</button>
+      <h2 class="modal-title" id="modal-title">Confirmación de asistencia</h2>
+
+      <form id="rsvp-form" class="rsvp-form" novalidate>
+        <div class="field-group">
+          <label class="field-label" for="guest-name">Nombre completo de todos los asistentes al evento</label>
+          <input
+            class="field-input"
+            type="text"
+            id="guest-name"
+            name="guest-name"
+            placeholder="Ej: Juan Pérez, María García..."
+            required
+            autocomplete="name"
+          >
+        </div>
+
+        <fieldset class="fieldset-radio">
+          <legend class="field-label">¿Podrás asistir a nuestra boda?</legend>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="yes" required>
+            <span class="radio-custom"></span>
+            Sí asistiré
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="no">
+            <span class="radio-custom"></span>
+            Lo siento, no podré
+          </label>
+        </fieldset>
+
+        <div class="field-group">
+          <label class="field-label" for="guest-message">Déjanos tus felicitaciones y buenos deseos aquí:</label>
+          <textarea
+            class="field-input field-textarea"
+            id="guest-message"
+            name="guest-message"
+            placeholder="Tu mensaje para los novios..."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit">Enviar</button>
+      </form>
+
+      <div class="rsvp-success hidden" id="rsvp-success" role="status">
+        <div class="success-heart" aria-hidden="true">❤</div>
+        <h3 class="success-title">¡Gracias por confirmar!</h3>
+        <p class="success-text">Nos emociona contar contigo en este día tan especial.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas de partículas -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
   <script src="script.js"></script>
 </body>
