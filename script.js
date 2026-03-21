@@ -131,23 +131,22 @@ function initEnvelope() {
     // Quitar CTA
     if (envelopeCta) envelopeCta.style.opacity = '0';
 
+    // Quitar hover del sobre para no interferir con la animación abierta
+    envelope.style.cursor = 'default';
+
     // Shake
     envelope.classList.add('is-opening');
 
     setTimeout(() => {
       envelope.classList.remove('is-opening');
-      // Abrir la solapa
+      // Abrir la solapa y las tarjetas flotantes
       envelope.classList.add('open');
 
       // Partículas
       window.triggerParticleBurst();
     }, 300);
 
-    // Esperar que la tarjeta suba, luego al hacer clic en el badge transicionar
-    // Al cabo de 2.5s transicionar automáticamente (tiempo para ver la tarjeta y el badge)
-    setTimeout(() => {
-      transitionToInvitation();
-    }, 2500);
+    // La transición NO es automática; el usuario debe tocar el badge
   }
 
   function transitionToInvitation() {
@@ -170,14 +169,27 @@ function initEnvelope() {
     }, 700);
   }
 
-  // El clic puede ser en el sobre completo o en el sello
-  envelope.addEventListener('click', openEnvelope);
+  // El clic en el sobre (cuando está cerrado) lo abre
+  envelope.addEventListener('click', (e) => {
+    // Si ya está abierto, no volvemos a abrir (el badge es quien transiciona)
+    if (opened) return;
+    openEnvelope();
+  });
 
-  // También clic en el badge lleva a la invitación directamente
+  // El badge "VER MÁS DETALLES" es el único que lleva a la invitación
   if (innerCardBadge) {
     innerCardBadge.addEventListener('click', (e) => {
       e.stopPropagation();
+      if (!opened) return; // Solo actúa si el sobre ya está abierto
       transitionToInvitation();
+    });
+
+    // Soporte de teclado para el badge (role="button")
+    innerCardBadge.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && opened) {
+        e.preventDefault();
+        transitionToInvitation();
+      }
     });
   }
 

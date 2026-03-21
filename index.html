@@ -41,12 +41,28 @@
         <p class="envelope-cta" id="envelope-cta">
           <span class="cta-arrow">&#9660;</span> Clic aquí para abrir
         </p>
-        <!-- Tarjeta que sale -->
+        <!-- Elementos que salen del sobre -->
         <div class="inner-card" id="inner-card">
-          <p class="inner-card-reserved">RESERVADO PARA:</p>
-          <p class="inner-card-guest">Familia Invitada</p>
-          <p class="inner-card-persons">2 personas</p>
-          <div class="inner-card-badge" id="inner-card-badge">VER MÁS<br>DETALLES</div>
+          <!-- Tarjeta de invitación — sale hacia arriba-izquierda -->
+          <div class="invite-card-float" id="invite-card-float">
+            <p class="icf-reserved">RESERVADO PARA:</p>
+            <p class="icf-guest">Familia Invitada</p>
+            <p class="icf-persons">2 personas</p>
+          </div>
+          <!-- Foto polaroid — sale hacia arriba-derecha -->
+          <div class="photo-card-float" id="photo-card-float" aria-label="Foto de los novios">
+            <div class="pcf-photo">
+              <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true">
+                <circle cx="30" cy="26" r="10" stroke="#B0A090" stroke-width="2.5"/>
+                <path d="M10 50 Q30 36 50 50" stroke="#B0A090" stroke-width="2.5" fill="none"/>
+              </svg>
+              <p class="pcf-label">A &amp; E</p>
+            </div>
+          </div>
+        </div>
+        <!-- Badge "Ver más detalles" — abajo-derecha del sobre -->
+        <div class="inner-card-badge" id="inner-card-badge" role="button" tabindex="0" aria-label="Ver más detalles de la invitación">
+          <span class="icb-text">VER MÁS<br>DETALLES</span>
         </div>
       </div>
     </div>

@@ -264,85 +264,178 @@ button {
   user-select: none;
 }
 
-/* Tarjeta interna */
+/* Contenedor invisible que ancla las dos tarjetas flotantes al centro del sobre */
 .inner-card {
   position: absolute;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* ---- Tarjeta de invitación flotante (izquierda) ---- */
+.invite-card-float {
+  position: absolute;
+  width: 120px;
   background: var(--white);
-  border-radius: 6px 6px 0 0;
-  padding: 16px 12px 12px;
+  border: 1px solid var(--gold-lighter);
+  border-radius: 6px;
+  padding: 14px 10px 12px;
   text-align: center;
-  box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
-  transform: translateY(110%);
+  box-shadow:
+    0 8px 28px rgba(0,0,0,0.18),
+    0 2px 8px rgba(201,168,76,0.15);
+  /* Estado inicial: dentro del sobre, invisible */
+  transform: translate(0, 20px) rotate(0deg) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
   transition:
-    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
-    visibility 0s linear 0.35s;
-  z-index: 5;
-  /* Oculta completamente hasta que el sobre se abra */
-  visibility: hidden;
+    transform 0.7s cubic-bezier(0.34, 1.30, 0.64, 1) 0.3s,
+    opacity 0.5s ease 0.3s;
 }
 
-.envelope.open .inner-card {
-  transform: translateY(-5%);
-  visibility: visible;
-  transition:
-    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
-    visibility 0s linear 0.35s;
+.envelope.open .invite-card-float {
+  transform: translate(-105%, -110%) rotate(-15deg) scale(1);
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.inner-card-reserved {
+.icf-reserved {
   font-family: var(--font-sans);
-  font-size: 0.55rem;
-  letter-spacing: 3px;
-  color: var(--text-soft);
+  font-size: 0.48rem;
+  letter-spacing: 2.5px;
+  color: var(--gold-dark);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
-.inner-card-guest {
+.icf-guest {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-dark);
+  line-height: 1.2;
 }
 
-.inner-card-persons {
+.icf-persons {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   color: var(--text-soft);
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
+/* ---- Foto polaroid flotante (derecha) ---- */
+.photo-card-float {
+  position: absolute;
+  width: 96px;
+  background: var(--white);
+  /* Borde estilo polaroid: grueso abajo y lados, delgado arriba */
+  padding: 7px 7px 22px 7px;
+  border-radius: 3px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.22),
+    0 3px 10px rgba(0,0,0,0.12);
+  /* Estado inicial: dentro del sobre, invisible */
+  transform: translate(0, 20px) rotate(0deg) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.7s cubic-bezier(0.34, 1.30, 0.64, 1) 0.5s,
+    opacity 0.5s ease 0.5s;
+}
+
+.envelope.open .photo-card-float {
+  transform: translate(20%, -80%) rotate(10deg) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pcf-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #E8E2D9;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.pcf-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-soft);
+  user-select: none;
+}
+
+/* ---- Badge circular "VER MÁS DETALLES" ---- */
 .inner-card-badge {
   position: absolute;
-  right: -44px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 54px;
-  height: 54px;
+  /* Abajo-derecha del sobre */
+  bottom: -28px;
+  right: -28px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   background: var(--gold);
+  /* Borde decorativo doble */
+  box-shadow:
+    0 0 0 3px var(--gold),
+    0 0 0 5px rgba(201,168,76,0.35),
+    0 6px 20px rgba(154,114,40,0.45);
   color: var(--white);
   font-family: var(--font-sans);
-  font-size: 0.45rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 0.42rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6px;
-  box-shadow: var(--shadow-gold);
-  opacity: 0;
-  transition: opacity 0.4s ease 0.8s;
   cursor: pointer;
+  z-index: 12;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.4s ease 0.7s,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
+}
+
+/* Anillo interior decorativo */
+.inner-card-badge::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+
+.inner-card-badge:hover {
+  background: var(--gold-dark);
+  transform: scale(1.08);
+}
+
+.inner-card-badge:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 3px;
 }
 
 .envelope.open .inner-card-badge {
   opacity: 1;
+  transform: scale(1);
+}
+
+.icb-text {
+  position: relative;
+  z-index: 1;
 }
 
 /* CTA texto — posicionado dentro del sobre */
