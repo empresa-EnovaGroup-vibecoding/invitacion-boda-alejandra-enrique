@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alejandra & Enrique - 09 de Mayo 2026</title>
+  <meta name="description" content="Estás invitado a la boda de Alejandra y Enrique. 09 de Mayo de 2026.">
+  <meta property="og:title" content="Boda de Alejandra & Enrique">
+  <meta property="og:description" content="Nos casamos! 09 de Mayo de 2026 - Hotel Guadalupe, La Puerta, Trujillo">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========== ENVELOPE COVER ========== -->
+  <div id="envelope-screen">
+    <div class="envelope-container">
+      <div class="wax-seal" id="wax-seal">
+        <span class="seal-text">A & E</span>
+      </div>
+      <p class="envelope-instruction">Toca el sello para abrir</p>
+      <div class="floating-petals">
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
+        <div class="petal petal-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN INVITATION ========== -->
+  <main id="invitation" class="hidden">
+
+    <!-- MUSIC TOGGLE -->
+    <button id="music-toggle" class="music-btn" aria-label="Toggle music">
+      <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18V5l12-2v13"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="16" r="3"/>
+      </svg>
+      <span class="music-bars">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </span>
+    </button>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="ornament ornament-top">
+        <svg viewBox="0 0 200 30" class="ornament-svg">
+          <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hero-content reveal">
+        <p class="hero-subtitle">Tenemos el honor de invitarte a la boda de</p>
+        <h1 class="bride-name">Alejandra</h1>
+        <div class="ampersand">&</div>
+        <h1 class="groom-name">Enrique</h1>
+        <div class="hero-date">
+          <div class="date-line"></div>
+          <span>09 de Mayo de 2026</span>
+          <div class="date-line"></div>
+        </div>
+      </div>
+      <div class="ornament ornament-bottom">
+        <svg viewBox="0 0 200 30" class="ornament-svg">
+          <path d="M0,15 Q50,30 100,15 Q150,0 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section" id="countdown">
+      <div class="section-wrapper reveal">
+        <p class="section-label">Faltan</p>
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <span class="countdown-number" id="days">000</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">Minutos</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">Segundos</span>
+          </div>
+        </div>
+        <p class="countdown-message">para el día más especial de nuestras vidas</p>
+      </div>
+    </section>
+
+    <!-- COUPLE PHOTO -->
+    <section class="couple-section" id="couple">
+      <div class="section-wrapper reveal">
+        <div class="couple-frame">
+          <div class="photo-placeholder" id="couple-photo">
+            <div class="placeholder-initials">A & E</div>
+            <p class="placeholder-text">Nuestra foto juntos</p>
+          </div>
+          <div class="frame-corner frame-tl"></div>
+          <div class="frame-corner frame-tr"></div>
+          <div class="frame-corner frame-bl"></div>
+          <div class="frame-corner frame-br"></div>
+        </div>
+        <blockquote class="love-quote">
+          "El amor no se mira, se siente, y aún más cuando ella está junto a mí."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- OUR STORY TIMELINE -->
+    <section class="story-section" id="story">
+      <div class="section-wrapper">
+        <h2 class="section-title reveal">Nuestra Historia</h2>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/>
+                </svg>
+              </div>
+              <h3>Nos Conocimos</h3>
+              <p>El destino nos cruzó en el momento perfecto y desde entonces supimos que algo mágico estaba por comenzar.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                </svg>
+              </div>
+              <h3>Nos Enamoramos</h3>
+              <p>Cada día juntos confirmaba lo que nuestros corazones ya sabían: estábamos hechos el uno para el otro.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3>La Propuesta</h3>
+              <p>Con el corazón latiendo a mil, llegó la pregunta más importante: ¿Quieres pasar el resto de tu vida conmigo?</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <h3>¡Nos Casamos!</h3>
+              <p class="highlight-text">09 de Mayo de 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT DETAILS -->
+    <section class="events-section" id="events">
+      <div class="section-wrapper">
+        <h2 class="section-title reveal">Celebración</h2>
+
+        <div class="event-cards">
+          <div class="event-card reveal">
+            <div class="event-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 21h18M3 7v14M21 7v14M6 7V3m12 4V3M6 7h12M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/>
+              </svg>
+            </div>
+            <h3>Recepción</h3>
+            <div class="event-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="detail-icon">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              <span>09 de Mayo de 2026</span>
+            </div>
+            <div class="event-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="detail-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Hotel Guadalupe<br>La Puerta, Trujillo</span>
+            </div>
+            <a href="https://www.google.com/maps/search/Hotel+Guadalupe+La+Puerta+Trujillo" target="_blank" rel="noopener" class="map-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="btn-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Cómo Llegar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="dresscode-section" id="dresscode">
+      <div class="section-wrapper reveal">
+        <h2 class="section-title">Código de Vestimenta</h2>
+        <p class="dresscode-label">Formal / Elegante</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #e0d5c5;">
+            <span class="swatch-name">Blanco</span>
+          </div>
+          <div class="color-swatch" style="background: #D4AF37;">
+            <span class="swatch-name" style="color: #fff;">Dorado</span>
+          </div>
+          <div class="color-swatch" style="background: #D4C5A9;">
+            <span class="swatch-name">Beige</span>
+          </div>
+          <div class="color-swatch" style="background: #2C2C2C;">
+            <span class="swatch-name" style="color: #fff;">Negro</span>
+          </div>
+        </div>
+        <p class="dresscode-note">Te sugerimos estos tonos para armonizar con nuestra celebración</p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-wrapper">
+        <h2 class="section-title reveal">Galería</h2>
+        <div class="gallery-grid reveal">
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <span>Foto 1</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <span>Foto 2</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <span>Foto 3</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <span>Foto 4</span>
+            </div>
+          </div>
+          <div class="gallery-item gallery-item-wide">
+            <div class="gallery-placeholder">
+              <span>Foto 5</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              <span>Foto 6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section" id="rsvp">
+      <div class="section-wrapper">
+        <h2 class="section-title reveal">Confirma tu Asistencia</h2>
+        <p class="rsvp-subtitle reveal">Tu presencia es el mejor regalo que podemos recibir</p>
+
+        <form class="rsvp-form reveal" id="rsvp-form">
+          <div class="form-group">
+            <input type="text" id="guest-name" placeholder="Tu nombre completo" required>
+            <label for="guest-name">Nombre</label>
+          </div>
+          <div class="form-group">
+            <select id="guest-count" required>
+              <option value="" disabled selected>¿Cuántos asistirán?</option>
+              <option value="1">1 persona</option>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5">5 personas</option>
+            </select>
+            <label for="guest-count">Acompañantes</label>
+          </div>
+          <div class="form-group">
+            <select id="attendance" required>
+              <option value="" disabled selected>¿Asistirás?</option>
+              <option value="yes">¡Sí, ahí estaré!</option>
+              <option value="no">Lo siento, no podré asistir</option>
+            </select>
+            <label for="attendance">Asistencia</label>
+          </div>
+          <div class="form-group">
+            <textarea id="guest-message" placeholder="Un mensaje para los novios (opcional)" rows="3"></textarea>
+            <label for="guest-message">Mensaje</label>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span>Confirmar Asistencia</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </form>
+        <div class="rsvp-success hidden" id="rsvp-success">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+              <path d="M22 4L12 14.01l-3-3"/>
+            </svg>
+          </div>
+          <h3>¡Gracias por confirmar!</h3>
+          <p>Nos emociona saber que estarás con nosotros en este día tan especial.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIFT -->
+    <section class="gift-section" id="gift">
+      <div class="section-wrapper reveal">
+        <h2 class="section-title">Mesa de Regalos</h2>
+        <div class="gift-icon-large">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+          </svg>
+        </div>
+        <p class="gift-message">Tu presencia es nuestro mejor regalo. Sin embargo, si deseas tener un detalle con nosotros, puedes contribuir a nuestro nuevo hogar.</p>
+        <div class="gift-details">
+          <p class="gift-bank">Información bancaria próximamente</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+      <div class="footer-content reveal">
+        <div class="footer-ornament">
+          <svg viewBox="0 0 200 30" class="ornament-svg">
+            <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+          </svg>
+        </div>
+        <p class="footer-names">Alejandra & Enrique</p>
+        <p class="footer-date">09 . 05 . 2026</p>
+        <p class="footer-message">Con amor, les esperamos para celebrar juntos el inicio de nuestra historia para siempre.</p>
+        <div class="footer-hearts">
+          <span>&#10084;</span>
+        </div>
+        <button class="share-btn" id="share-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+          Compartir Invitación
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- PARTICLES CANVAS -->
+  <canvas id="particles-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
