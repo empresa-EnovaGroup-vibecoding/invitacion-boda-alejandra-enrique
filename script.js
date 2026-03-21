@@ -144,11 +144,10 @@ function initEnvelope() {
     }, 300);
 
     // Esperar que la tarjeta suba, luego al hacer clic en el badge transicionar
-    // Al cabo de 1.2s mostrar instrucción o transicionar directamente
+    // Al cabo de 2.5s transicionar automáticamente (tiempo para ver la tarjeta y el badge)
     setTimeout(() => {
-      // Transición de pantalla automática a los 1.8s desde apertura
       transitionToInvitation();
-    }, 1800);
+    }, 2500);
   }
 
   function transitionToInvitation() {

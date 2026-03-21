@@ -80,7 +80,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0;
-  background: linear-gradient(160deg, var(--cream) 0%, var(--beige) 55%, var(--beige-mid) 100%);
+  background: #FAFAF8;
   padding: 24px 20px 32px;
   transition: opacity 0.7s ease, transform 0.7s ease;
   overflow: hidden;
@@ -109,10 +109,13 @@ button {
 }
 
 .env-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 9vw, 4rem);
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 8.5vw, 3.6rem);
+  font-weight: 600;
+  font-style: normal;
   color: var(--text-dark);
   line-height: 1.05;
+  letter-spacing: 2px;
 }
 
 /* Wrapper del sobre */
@@ -129,8 +132,9 @@ button {
   position: relative;
   width: min(260px, 68vw);
   cursor: pointer;
-  filter: drop-shadow(0 8px 24px rgba(160, 120, 48, 0.30));
   transition: transform 0.2s ease;
+  /* Perspectiva para la animación 3D de la solapa */
+  perspective: 600px;
 }
 
 .envelope:hover {
@@ -146,48 +150,55 @@ button {
   position: relative;
   width: 100%;
   padding-top: 65%;
-  background: linear-gradient(160deg, #B8923A 0%, #C9A84C 40%, #D4B860 100%);
+  background: linear-gradient(160deg, #8B6530 0%, #9B7340 45%, #A07840 100%);
   border-radius: 2px 2px 6px 6px;
   overflow: hidden;
+  box-shadow:
+    0 10px 32px rgba(80, 50, 10, 0.45),
+    0 4px 12px rgba(0,0,0,0.25);
 }
 
-.envelope-left-fold,
-.envelope-right-fold,
-.envelope-bottom-fold {
-  position: absolute;
-  background: rgba(0,0,0,0.06);
-}
-
+/* Pliegues laterales del sobre — líneas diagonales sutiles */
 .envelope-left-fold {
+  position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 130px 130px;
-  border-color: transparent transparent rgba(0,0,0,0.08) transparent;
+  border-width: 0 0 calc(min(260px, 68vw) * 0.65) calc(min(260px, 68vw) * 0.5);
+  border-color: transparent transparent rgba(0,0,0,0.10) transparent;
   background: none;
-  width: 50%;
 }
 
 .envelope-right-fold {
-  right: 0; top: 0; bottom: 0;
+  position: absolute;
+  right: 0; top: 0;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 130px 130px 0 0;
+  border-width: calc(min(260px, 68vw) * 0.65) calc(min(260px, 68vw) * 0.5) 0 0;
   border-color: rgba(0,0,0,0.06) transparent transparent transparent;
   background: none;
-  width: 50%;
 }
 
-/* Folds dibujados con CSS puro */
+.envelope-bottom-fold {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0,0,0,0.08) 0%, transparent 100%);
+}
+
+/* Brillo sutil en el cuerpo del sobre */
 .envelope-body::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom-right, rgba(255,255,255,0.12) 0%, transparent 50%),
-    linear-gradient(to bottom-left, rgba(0,0,0,0.08) 0%, transparent 50%);
+    linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 45%),
+    linear-gradient(225deg, rgba(0,0,0,0.06) 0%, transparent 45%);
+  pointer-events: none;
 }
 
 /* Solapa superior (triangular) */
@@ -200,18 +211,18 @@ button {
   width: 100%;
   height: 0;
   border-style: solid;
-  border-color: #9A7228 transparent transparent transparent;
-  border-width: calc(min(260px, 68vw) * 0.38) calc(min(260px, 68vw) * 0.5) 0;
+  border-color: #7A5520 transparent transparent transparent;
+  border-width: calc(min(260px, 68vw) * 0.44) calc(min(260px, 68vw) * 0.5) 0;
   transform-origin: top center;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.25));
 }
 
 .envelope.open .envelope-flap {
   transform: rotateX(-180deg);
 }
 
-/* Sello de cera */
+/* Sello de cera — centrado sobre la línea de unión flap/body */
 .wax-seal {
   position: absolute;
   top: 50%;
@@ -264,13 +275,21 @@ button {
   padding: 16px 12px 12px;
   text-align: center;
   box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
-  transform: translateY(100%);
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  transform: translateY(110%);
+  transition:
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
+    visibility 0s linear 0.35s;
   z-index: 5;
+  /* Oculta completamente hasta que el sobre se abra */
+  visibility: hidden;
 }
 
 .envelope.open .inner-card {
-  transform: translateY(20%);
+  transform: translateY(-5%);
+  visibility: visible;
+  transition:
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
+    visibility 0s linear 0.35s;
 }
 
 .inner-card-reserved {
@@ -326,19 +345,29 @@ button {
   opacity: 1;
 }
 
-/* CTA texto */
+/* CTA texto — posicionado dentro del sobre */
 .envelope-cta {
-  margin-top: 16px;
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-family: var(--font-serif);
-  font-size: 0.85rem;
-  color: var(--text-soft);
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  color: rgba(255, 248, 230, 0.85);
   letter-spacing: 2px;
+  z-index: 15;
+  pointer-events: none;
   animation: gentlePulse 2s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
 .cta-arrow {
-  color: var(--gold);
-  font-size: 0.8rem;
+  color: rgba(255, 235, 160, 0.9);
+  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 4px;
 }
 
 /* Nombres debajo del sobre */
