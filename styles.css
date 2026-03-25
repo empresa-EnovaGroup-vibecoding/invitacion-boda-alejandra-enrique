@@ -69,8 +69,98 @@ button {
 }
 
 /* ============================================================
-   1. PANTALLA DE SOBRE
+   0. ESTILOS CINEMATOGRÁFICOS (usados en el hero)
    ============================================================ */
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-2%, -3%); }
+}
+
+.intro-top-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.intro-names {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--white);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.intro-amp {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gold-light);
+  margin: 4px 0;
+}
+
+.intro-date-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 12px;
+}
+
+.intro-line {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--gold-light);
+}
+
+.intro-diamond {
+  color: var(--gold-light);
+  font-size: 0.6rem;
+}
+
+.intro-date {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+}
+
+.intro-scroll-hint {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: introHintIn 1.5s ease-out 1.5s both;
+}
+
+@keyframes introHintIn {
+  0% { opacity: 0; }
+  100% { opacity: 0.7; }
+}
+
+.intro-scroll-arrow {
+  display: block;
+  font-size: 2rem;
+  color: var(--gold-light);
+  animation: ctaBounce 2s ease-in-out infinite;
+}
+
+@keyframes ctaBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ============================================================
+   1. PANTALLA DE SOBRE — Rediseño full-screen elegante
+   ============================================================ */
+
+/* La pantalla entera ES el sobre — foto real de fondo, posicionada para mostrar solo papel */
 #envelope-screen {
   position: fixed;
   inset: 0;
@@ -79,191 +169,188 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  background: #FAFAF8;
-  padding: 24px 20px 32px;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  background-color: #EDE7DA;
+  transition: opacity 0.8s ease, transform 0.8s ease;
   overflow: hidden;
+}
+
+/* Imagen del sobre — responsiva */
+.envelope-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  z-index: 0;
+}
+
+/* En pantallas anchas (desktop/tablet landscape): ver sobre completo */
+@media (min-aspect-ratio: 1/1) {
+  .envelope-bg-img {
+    object-fit: contain;
+    object-position: center center;
+  }
 }
 
 #envelope-screen.fade-out {
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.04);
   pointer-events: none;
 }
 
-/* Texto superior */
+/* Elementos decorativos del sobre - ocultos, ya no se usan */
+.envelope-flap-top,
+.envelope-flap-bottom,
+.envelope-fold-line {
+  display: none;
+}
+
+/* Al abrirse: el fondo se aclara */
+#envelope-screen.opened {
+  background-color: #FDFAF4;
+}
+
+/* Texto superior con la fecha — muy sutil, arriba del todo */
 .envelope-bg-text {
-  text-align: center;
-  margin-bottom: 16px;
-  animation: fadeInDown 1s ease both;
+  display: none; /* Oculto — la foto del sobre habla sola */
+}
+
+#envelope-screen.opened .envelope-bg-text {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
 }
 
 .env-top-text {
   font-family: var(--font-serif);
-  font-size: clamp(0.75rem, 3vw, 0.95rem);
+  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
   font-style: italic;
   color: var(--text-soft);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
+/* Ocultar el headline antiguo — ya no se usa, pero por si el HTML lo mantiene */
 .env-headline {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 8.5vw, 3.6rem);
-  font-weight: 600;
-  font-style: normal;
-  color: var(--text-dark);
-  line-height: 1.05;
-  letter-spacing: 2px;
+  display: none;
 }
 
-/* Wrapper del sobre */
+/* Wrapper central — contiene el sello y el CTA */
 .envelope-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: floatUp 1.2s ease 0.3s both;
+  z-index: 5;
+  animation: floatUp 1.4s ease 0.2s both;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
 }
 
-/* El sobre */
+/* Al abrir: bajar suavemente para dar espacio a las tarjetas */
+#envelope-screen.opened .envelope-wrapper {
+  transform: translateY(clamp(40px, 8vh, 70px));
+}
+
+/* El contenedor del sobre — ahora es solo el punto de anclaje para el sello y tarjetas */
 .envelope {
   position: relative;
-  width: min(320px, 82vw);
+  width: min(340px, 88vw);
   cursor: pointer;
   transition: transform 0.2s ease;
-  perspective: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.envelope:hover {
-  transform: translateY(-4px) scale(1.02);
+.envelope:hover .wax-seal-wrap {
+  transform: scale(1.06);
 }
 
 .envelope.is-opening {
-  animation: envelopeShake 0.3s ease;
+  animation: envelopeShake 0.35s ease;
 }
 
-/* Cuerpo del sobre */
+/* Cuerpo del sobre — invisible, solo estructura */
 .envelope-body {
-  position: relative;
-  width: 100%;
-  padding-top: 62%;
-  background: linear-gradient(160deg, #8B6530 0%, #9B7340 45%, #A07840 100%);
-  border-radius: 2px 2px 6px 6px;
-  overflow: hidden;
-  box-shadow:
-    0 10px 32px rgba(80, 50, 10, 0.45),
-    0 4px 12px rgba(0,0,0,0.25);
+  display: none;
 }
 
-/* Pliegues laterales del sobre — líneas diagonales sutiles */
-.envelope-left-fold {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 calc(min(320px, 82vw) * 0.65) calc(min(320px, 82vw) * 0.5);
-  border-color: transparent transparent rgba(0,0,0,0.10) transparent;
-  background: none;
-}
-
-.envelope-right-fold {
-  position: absolute;
-  right: 0; top: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: calc(min(320px, 82vw) * 0.65) calc(min(320px, 82vw) * 0.5) 0 0;
-  border-color: rgba(0,0,0,0.06) transparent transparent transparent;
-  background: none;
-}
-
+.envelope-left-fold,
+.envelope-right-fold,
 .envelope-bottom-fold {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: linear-gradient(to top, rgba(0,0,0,0.08) 0%, transparent 100%);
+  display: none;
 }
 
-/* Brillo sutil en el cuerpo del sobre */
-.envelope-body::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 45%),
-    linear-gradient(225deg, rgba(0,0,0,0.06) 0%, transparent 45%);
+/* Solapa del sobre — invisible en este diseño */
+.envelope-flap {
+  display: none;
+}
+
+/* === SELLO DE CERA — está en la foto de fondo === */
+.wax-seal-wrap {
+  display: none;
+}
+
+.wax-seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   pointer-events: none;
 }
 
-/* Solapa superior (triangular) */
-.envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  width: 100%;
-  height: 0;
-  border-style: solid;
-  border-color: #7A5520 transparent transparent transparent;
-  border-width: calc(min(320px, 82vw) * 0.44) calc(min(320px, 82vw) * 0.5) 0;
-  transform-origin: top center;
-  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.25));
+.wax-seal-wrap:hover {
+  transform: scale(1.06);
 }
 
-.envelope.open .envelope-flap {
-  transform: rotateX(-180deg);
+/* Al abrirse: el sello se rompe / desaparece */
+.envelope.open .wax-seal-wrap {
+  animation: sealBreak 0.5s cubic-bezier(0.55, 0, 1, 0.45) both;
+  pointer-events: none;
 }
 
-/* Sello de cera — centrado sobre la línea de unión flap/body */
-.wax-seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 20;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 35%, #E8C86A, #C9A84C 50%, #9A7228);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 3px 12px rgba(154, 114, 40, 0.5),
-    inset 0 -2px 4px rgba(0,0,0,0.15),
-    inset 0 2px 4px rgba(255,255,255,0.2);
-  animation: sealPulse 2.5s ease-in-out infinite;
-  transition: transform 0.2s ease;
+@keyframes sealBreak {
+  0%   { opacity: 1; transform: scale(1) rotate(0deg); }
+  40%  { opacity: 0.8; transform: scale(1.12) rotate(-4deg); }
+  100% { opacity: 0; transform: scale(0.6) rotate(8deg); }
 }
 
-.wax-seal::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.22);
+@keyframes sealFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
-.wax-seal:hover {
-  transform: translate(-50%, -50%) scale(1.08);
+/* (seal-initials eliminado — ahora dentro del SVG) */
+
+/* CTA "Toca para abrir" — oculto, la foto habla sola */
+.envelope-cta {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  font-style: italic;
+  color: var(--text-soft);
+  letter-spacing: 2px;
+  z-index: 5;
+  pointer-events: none;
+  animation: gentlePulse 2.8s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+  position: relative;
 }
 
-.seal-initials {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--cream);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  user-select: none;
+.cta-arrow {
+  display: none;
 }
 
-/* Contenedor invisible que ancla las dos tarjetas flotantes al centro del sobre */
+.envelope.open .envelope-cta {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+  pointer-events: none;
+}
+
+/* Contenedor ancla para tarjetas flotantes */
 .inner-card {
   position: absolute;
   top: 50%;
@@ -271,45 +358,45 @@ button {
   width: 0;
   height: 0;
   transform: translate(-50%, -50%);
-  z-index: 8;
+  z-index: 30;
   pointer-events: none;
 }
 
 /* ---- Tarjeta de invitación flotante (izquierda) ---- */
 .invite-card-float {
   position: absolute;
-  width: 140px;
+  width: 148px;
   background: var(--white);
-  border: 2px solid var(--beige-mid);
-  outline: 1px solid var(--gold-lighter);
-  outline-offset: 3px;
-  border-radius: 4px;
-  padding: 18px 14px 16px;
+  border: 1.5px solid var(--beige-mid);
+  outline: 1px solid rgba(201, 168, 76, 0.30);
+  outline-offset: 4px;
+  border-radius: 3px;
+  padding: 20px 14px 18px;
   text-align: center;
   box-shadow:
-    0 10px 35px rgba(0,0,0,0.20),
-    0 3px 10px rgba(201,168,76,0.12);
-  transform: translate(0, 20px) rotate(0deg) scale(0.5);
+    0 14px 45px rgba(0,0,0,0.18),
+    0 4px 14px rgba(201,168,76,0.10);
+  transform: translate(0, 10px) scale(0.4);
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.7s cubic-bezier(0.34, 1.30, 0.64, 1) 0.3s,
-    opacity 0.5s ease 0.3s;
+    transform 0.75s cubic-bezier(0.34, 1.35, 0.64, 1) 0.25s,
+    opacity 0.5s ease 0.25s;
 }
 
 .envelope.open .invite-card-float {
-  transform: translate(-110%, -120%) rotate(-18deg) scale(1);
+  transform: translate(-110%, -220%) rotate(-14deg) scale(1);
   opacity: 1;
   pointer-events: auto;
 }
 
 .icf-reserved {
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   letter-spacing: 3px;
   color: var(--text-dark);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 700;
 }
 
@@ -324,32 +411,32 @@ button {
 
 .icf-persons {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   color: var(--text-mid);
-  margin-top: 6px;
+  margin-top: 7px;
   font-weight: 500;
 }
 
 /* ---- Foto polaroid flotante (derecha) ---- */
 .photo-card-float {
   position: absolute;
-  width: 115px;
+  width: 118px;
   background: var(--white);
-  padding: 6px 6px 24px 6px;
+  padding: 6px 6px 26px 6px;
   border-radius: 2px;
   box-shadow:
-    0 12px 35px rgba(0,0,0,0.25),
-    0 4px 12px rgba(0,0,0,0.15);
-  transform: translate(0, 20px) rotate(0deg) scale(0.5);
+    0 14px 40px rgba(0,0,0,0.22),
+    0 5px 14px rgba(0,0,0,0.12);
+  transform: translate(0, 10px) scale(0.4);
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.7s cubic-bezier(0.34, 1.30, 0.64, 1) 0.5s,
-    opacity 0.5s ease 0.5s;
+    transform 0.75s cubic-bezier(0.34, 1.35, 0.64, 1) 0.45s,
+    opacity 0.5s ease 0.45s;
 }
 
 .envelope.open .photo-card-float {
-  transform: translate(35%, -90%) rotate(12deg) scale(1);
+  transform: translate(62%, -185%) rotate(11deg) scale(1);
   opacity: 1;
   pointer-events: auto;
 }
@@ -358,28 +445,26 @@ button {
   width: 100%;
   aspect-ratio: 1;
   background: #E8E2D9;
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  border-radius: 1px;
+  overflow: hidden;
 }
 
-.pcf-label {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--text-soft);
-  user-select: none;
+.pcf-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
 }
 
-/* ---- Badge circular "VER MÁS DETALLES" ---- */
+/* ---- Badge "VER MÁS DETALLES" — centro-inferior ---- */
 .inner-card-badge {
   position: absolute;
-  bottom: -20px;
-  right: -30px;
-  width: 78px;
-  height: 78px;
+  bottom: clamp(-120px, -16vh, -90px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.5);
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   background: var(--cream);
   border: 2px solid var(--gold);
@@ -390,7 +475,7 @@ button {
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.45;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -398,14 +483,14 @@ button {
   cursor: pointer;
   z-index: 12;
   opacity: 0;
-  transform: scale(0.5);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow:
+    0 8px 28px rgba(0,0,0,0.12),
+    0 2px 8px rgba(201,168,76,0.15);
   transition:
-    opacity 0.4s ease 0.7s,
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
+    opacity 0.45s ease 0.7s,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
 }
 
-/* Anillo interior decorativo doble */
 .inner-card-badge::before {
   content: '';
   position: absolute;
@@ -418,7 +503,7 @@ button {
 .inner-card-badge::after {
   content: '';
   position: absolute;
-  inset: 9px;
+  inset: 10px;
   border-radius: 50%;
   border: 0.5px solid var(--gold-light);
   pointer-events: none;
@@ -426,7 +511,7 @@ button {
 
 .inner-card-badge:hover {
   background: var(--gold-dark);
-  transform: scale(1.08);
+  color: var(--white);
 }
 
 .inner-card-badge:focus-visible {
@@ -436,7 +521,7 @@ button {
 
 .envelope.open .inner-card-badge {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(-50%) scale(1);
 }
 
 .icb-text {
@@ -444,45 +529,32 @@ button {
   z-index: 1;
 }
 
-/* CTA texto — posicionado dentro del sobre */
-.envelope-cta {
+/* Nombres en la parte inferior de la pantalla — ocultos en el sobre */
+.envelope-names {
+  display: none;
   position: absolute;
-  bottom: 18%;
+  bottom: clamp(24px, 5vh, 44px);
   left: 0;
   right: 0;
   text-align: center;
   font-family: var(--font-serif);
-  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
-  color: rgba(255, 248, 230, 0.85);
-  letter-spacing: 2px;
-  z-index: 15;
-  pointer-events: none;
-  animation: gentlePulse 2s ease-in-out infinite;
-  transition: opacity 0.4s ease;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  font-size: clamp(0.75rem, 2.8vw, 1rem);
+  font-weight: 400;
+  letter-spacing: clamp(4px, 1.5vw, 8px);
+  color: var(--text-soft);
+  text-transform: uppercase;
+  animation: fadeInUp 1.4s ease 1s both;
+  z-index: 5;
+  transition: opacity 0.5s ease;
 }
 
-.cta-arrow {
-  color: rgba(255, 235, 160, 0.9);
-  font-size: 0.75rem;
-  display: block;
-  margin-bottom: 4px;
+#envelope-screen.opened .envelope-names {
+  opacity: 0;
 }
 
-/* Nombres debajo del sobre */
-.envelope-names {
-  margin-top: 20px;
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 4.5vw, 1.6rem);
-  letter-spacing: 1px;
-  color: var(--text-mid);
-  text-align: center;
-  animation: fadeInUp 1.2s ease 0.8s both;
-  padding: 0 12px;
-}
-
-/* Pétalos flotantes */
+/* Pétalos flotantes — ocultos en el sobre */
 .petals-layer {
+  display: none;
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -768,17 +840,24 @@ button {
 
 .hero-photo-bg {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 60%, rgba(30, 20, 5, 0.5) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 30%, rgba(10, 15, 5, 0.4) 0%, transparent 60%),
-    linear-gradient(160deg, #1a1a0a 0%, #2a1e0a 30%, #1a1008 60%, #0f0c04 100%);
+  inset: -20%;
+  width: 140%;
+  height: 140%;
 }
 
-.hero-photo-overlay {
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  animation: kenBurns 12s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 8, 2, 0.42);
+  z-index: 1;
+  background: radial-gradient(ellipse at center 40%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.7) 100%);
 }
 
 /* Hojas decorativas simulando naturaleza */
@@ -1062,28 +1141,11 @@ button {
   box-shadow: 0 8px 32px rgba(201,168,76,0.2);
 }
 
-.couple-photo-placeholder {
+.couple-photo-img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(160deg, var(--beige) 0%, var(--beige-mid) 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.placeholder-text {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  color: var(--gold);
-}
-
-.placeholder-sub {
-  font-family: var(--font-serif);
-  font-size: 0.8rem;
-  color: var(--text-soft);
-  font-style: italic;
+  object-fit: cover;
+  display: block;
 }
 
 /* Flores del arco */
@@ -1614,24 +1676,13 @@ button {
   margin: 0 auto;
 }
 
-.footer-photo-placeholder {
+.footer-photo-img {
   width: 100%;
   aspect-ratio: 4/5;
   max-height: 420px;
-  background: linear-gradient(160deg, var(--beige) 0%, var(--beige-mid) 100%);
   border-radius: 12px 12px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  overflow: hidden;
-}
-
-.footer-photo-placeholder img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .fp-text {

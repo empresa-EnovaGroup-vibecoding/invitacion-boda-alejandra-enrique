@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildCalendar();
 });
 
+
 /* ============================================================
    PARTÍCULAS DORADAS (Canvas)
    ============================================================ */
@@ -141,6 +142,8 @@ function initEnvelope() {
       envelope.classList.remove('is-opening');
       // Abrir la solapa y las tarjetas flotantes
       envelope.classList.add('open');
+      // Animar textos de fondo y bajar el wrapper
+      envelopeScreen.classList.add('opened');
 
       // Partículas
       window.triggerParticleBurst();
@@ -164,8 +167,10 @@ function initEnvelope() {
         });
       }, 150);
 
-      // Iniciar observer de reveal para el resto
       initRevealAnimations();
+
+      // Iniciar música automáticamente
+      if (window.autoPlayMusic) window.autoPlayMusic();
     }, 700);
   }
 
@@ -281,17 +286,33 @@ function initRevealAnimations() {
    ============================================================ */
 function initMusicToggle() {
   const btn = document.getElementById('music-toggle');
-  if (!btn) return;
+  const audio = document.getElementById('bg-music');
+  if (!btn || !audio) return;
 
   let isPlaying = false;
-  // Para activar música: const audio = new Audio('assets/cancion.mp3'); audio.loop = true;
 
   btn.addEventListener('click', () => {
-    isPlaying = !isPlaying;
+    if (audio.paused) {
+      audio.play();
+      isPlaying = true;
+    } else {
+      audio.pause();
+      isPlaying = false;
+    }
     btn.classList.toggle('playing', isPlaying);
     btn.setAttribute('aria-label', isPlaying ? 'Pausar música' : 'Activar música');
-    // audio.paused ? audio.play() : audio.pause();
   });
+
+  // Auto-play cuando aparece la invitación
+  window.autoPlayMusic = () => {
+    audio.play().then(() => {
+      isPlaying = true;
+      btn.classList.add('playing');
+      btn.setAttribute('aria-label', 'Pausar música');
+    }).catch(() => {
+      // Browser blocked autoplay, user must click button
+    });
+  };
 }
 
 /* ============================================================

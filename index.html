@@ -19,54 +19,54 @@
        1. PANTALLA DE SOBRE
        ============================ -->
   <div id="envelope-screen" aria-label="Portada de invitación">
-    <div class="envelope-bg-text">
-      <p class="env-top-text">El día más importante de nuestras vidas ha llegado</p>
-      <h1 class="env-headline">¡NOS CASAMOS!</h1>
+
+    <!-- Imagen del sobre con sello — llena toda la pantalla -->
+    <img src="sobre-completo.jpg" alt="" class="envelope-bg-img" draggable="false" aria-hidden="true">
+
+    <!-- Solapas del sobre -->
+    <div class="envelope-flap-top"></div>
+    <div class="envelope-flap-bottom"></div>
+    <div class="envelope-fold-line"></div>
+
+    <!-- Fecha sutil en la parte superior -->
+    <div class="envelope-bg-text" aria-hidden="true">
+      <p class="env-top-text">09 · 05 · 2026</p>
     </div>
 
+    <!-- El sobre — ahora centrado en la pantalla completa -->
     <div class="envelope-wrapper" id="envelope-wrapper">
-      <!-- El sobre -->
       <div class="envelope" id="envelope">
-        <div class="envelope-flap" id="envelope-flap"></div>
-        <div class="envelope-body">
-          <div class="envelope-left-fold"></div>
-          <div class="envelope-right-fold"></div>
-          <div class="envelope-bottom-fold"></div>
+
+        <!-- Sello de cera oculto — ya está en la foto -->
+        <div class="wax-seal-wrap" id="wax-seal" aria-label="Sello de cera — toca para abrir">
         </div>
-        <!-- Sello de cera -->
-        <div class="wax-seal" id="wax-seal">
-          <span class="seal-initials">A&amp;E</span>
-        </div>
-        <!-- CTA dentro del sobre, centrado sobre él -->
-        <p class="envelope-cta" id="envelope-cta">
-          <span class="cta-arrow">&#9660;</span> Clic aquí para abrir
-        </p>
-        <!-- Elementos que salen del sobre -->
+
+        <!-- CTA "Toca para abrir" bajo el sello -->
+        <p class="envelope-cta" id="envelope-cta">Toca para abrir</p>
+
+        <!-- Tarjetas que emergen al abrir -->
         <div class="inner-card" id="inner-card">
-          <!-- Tarjeta de invitación — sale hacia arriba-izquierda -->
           <div class="invite-card-float" id="invite-card-float">
-            <p class="icf-reserved">RESERVADO PARA:</p>
+            <p class="icf-reserved">Reservado para:</p>
             <p class="icf-guest">Familia Invitada</p>
             <p class="icf-persons">2 personas</p>
           </div>
-          <!-- Foto polaroid — sale hacia arriba-derecha -->
           <div class="photo-card-float" id="photo-card-float" aria-label="Foto de los novios">
             <div class="pcf-photo">
-              <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true">
-                <circle cx="30" cy="26" r="10" stroke="#B0A090" stroke-width="2.5"/>
-                <path d="M10 50 Q30 36 50 50" stroke="#B0A090" stroke-width="2.5" fill="none"/>
-              </svg>
-              <p class="pcf-label">A &amp; E</p>
+              <img src="novios.jpg" alt="Alejandra y Enrique" class="pcf-img">
             </div>
           </div>
         </div>
-        <!-- Badge "Ver más detalles" — abajo-derecha del sobre -->
+
+        <!-- Badge "Ver más detalles" -->
         <div class="inner-card-badge" id="inner-card-badge" role="button" tabindex="0" aria-label="Ver más detalles de la invitación">
           <span class="icb-text">VER MÁS<br>DETALLES</span>
         </div>
+
       </div>
     </div>
 
+    <!-- Nombres en la parte inferior -->
     <p class="envelope-names">ALEJANDRA &amp; ENRIQUE</p>
 
     <!-- Pétalos flotantes -->
@@ -101,27 +101,22 @@
     </button>
 
     <!-- ==========================
-         2. HERO
+         2. HERO (foto cinematográfica)
          ========================== -->
     <section class="hero" id="hero" aria-label="Portada principal">
       <div class="hero-photo-bg" aria-hidden="true">
-        <div class="hero-photo-overlay"></div>
-        <div class="hero-leaves hero-leaves-left" aria-hidden="true">
-          <div class="leaf l1"></div>
-          <div class="leaf l2"></div>
-          <div class="leaf l3"></div>
-          <div class="leaf l4"></div>
-        </div>
-        <div class="hero-leaves hero-leaves-right" aria-hidden="true">
-          <div class="leaf l5"></div>
-          <div class="leaf l6"></div>
-          <div class="leaf l7"></div>
-        </div>
+        <img src="novios.jpg" alt="" class="hero-photo-img" draggable="false">
       </div>
+      <div class="hero-overlay"></div>
       <div class="hero-content reveal">
-        <p class="hero-small-title">Nuestra boda</p>
-        <h2 class="hero-names">ALEJANDRA &amp; ENRIQUE</h2>
-        <p class="hero-date-display">09 · 05</p>
+        <p class="intro-top-text">Nos Casamos</p>
+        <h1 class="intro-names">Alejandra<span class="intro-amp">&amp;</span>Enrique</h1>
+        <div class="intro-date-line">
+          <span class="intro-line"></span>
+          <span class="intro-diamond">&#9830;</span>
+          <span class="intro-line"></span>
+        </div>
+        <p class="intro-date">09 de Mayo 2026</p>
       </div>
       <div class="scroll-down-hint" aria-hidden="true">
         <div class="scroll-chevron"></div>
@@ -206,10 +201,7 @@
         <div class="calendar-wrapper" id="calendar-wrapper" aria-label="Calendario de Mayo 2026"></div>
         <div class="couple-photo-frame">
           <div class="couple-arch-frame">
-            <div class="couple-photo-placeholder" id="couple-photo">
-              <p class="placeholder-text">A &amp; E</p>
-              <p class="placeholder-sub">Foto de los novios</p>
-            </div>
+            <img src="novios.jpg" alt="Alejandra y Enrique" class="couple-photo-img" id="couple-photo">
           </div>
           <div class="arch-flowers arch-flowers-left" aria-hidden="true">
             <span class="af af1">🌸</span>
@@ -550,10 +542,7 @@
         <p class="footer-date-text">09 · 05 · 2026</p>
       </div>
       <div class="footer-photo-area">
-        <div class="footer-photo-placeholder" id="footer-photo">
-          <p class="fp-text">Foto principal<br>de los novios</p>
-          <p class="fp-names">Alejandra &amp; Enrique</p>
-        </div>
+        <img src="novios.jpg" alt="Alejandra y Enrique" class="footer-photo-img" id="footer-photo">
       </div>
       <div class="footer-gold-bar" aria-hidden="true"></div>
     </footer>
@@ -617,6 +606,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Audio de fondo -->
+  <audio id="bg-music" src="musica.m4a" loop preload="auto"></audio>
 
   <!-- Canvas de partículas -->
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
